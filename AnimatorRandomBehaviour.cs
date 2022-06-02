@@ -7,7 +7,7 @@ using UnityEditor.Animations;
 #endif
 namespace Plugins.Runtime.Animators
 {
-	public class AnimatorRandomBehaviour : StateMachineBehaviour
+	public class AnimatorRandomBehaviour : StateMachineBehaviour,ISerializationCallbackReceiver
 	{
 		[SerializeField] RuntimeAnimatorController animatorController;
 		[SerializeField] float crossfadeTime = .1f;
@@ -66,6 +66,15 @@ namespace Plugins.Runtime.Animators
 			
 			EditorUtility.SetDirty(this);
   #endif
+		}
+		
+		public void OnBeforeSerialize()
+		{
+			CollectStates();
+		}
+		public void OnAfterDeserialize()
+		{
+			
 		}
 	}
 }
