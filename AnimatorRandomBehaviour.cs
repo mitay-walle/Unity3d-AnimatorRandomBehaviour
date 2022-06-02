@@ -41,6 +41,7 @@ namespace Plugins.Runtime.Animators
 		void CollectStates()
 		{
 #if UNITY_EDITOR
+			if (!animatorController) return;
 			var controller = animatorController as AnimatorController;
 			AnimatorStateMachine machine = null;
 			foreach (AnimatorControllerLayer layer in controller.layers)
